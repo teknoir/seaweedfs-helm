@@ -230,7 +230,7 @@ If allInOne is enabled, point to the all-in-one service; otherwise, point to the
 {{- define "seaweedfs.cluster.masterAddress" -}}
 {{- $serviceNameSuffix := "-master" -}}
 {{- if .Values.allInOne.enabled -}}
-{{-   $serviceNameSuffix = "-all-in-one" -}}
+{{-   $serviceNameSuffix = "" -}}
 {{- end -}}
 {{- printf "%s%s.%s:%d" (include "seaweedfs.name" .) $serviceNameSuffix .Release.Namespace (int .Values.master.port) -}}
 {{- end -}}
@@ -242,7 +242,7 @@ If allInOne is enabled, point to the all-in-one service; otherwise, point to the
 {{- define "seaweedfs.cluster.filerAddress" -}}
 {{- $serviceNameSuffix := "-filer-client" -}}
 {{- if .Values.allInOne.enabled -}}
-{{-   $serviceNameSuffix = "-all-in-one" -}}
+{{-   $serviceNameSuffix = "" -}}
 {{- end -}}
 {{- printf "%s%s.%s:%d" (include "seaweedfs.name" .) $serviceNameSuffix .Release.Namespace (int .Values.filer.port) -}}
 {{- end -}}
