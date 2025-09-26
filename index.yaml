@@ -3,6 +3,15 @@ entries:
   seaweedfs:
   - apiVersion: v1
     appVersion: "3.97"
+    created: "2025-09-26T13:25:02.347438825Z"
+    description: SeaweedFS
+    digest: 4bd404527ad14690e66ee2c02b647b19587683b0cd31fd7bfd2825e0bb943449
+    name: seaweedfs
+    urls:
+    - https://github.com/teknoir/seaweedfs-helm/releases/download/seaweedfs-0.0.0-beta.3/seaweedfs-0.0.0-beta.3.tgz
+    version: 0.0.0-beta.3
+  - apiVersion: v1
+    appVersion: "3.97"
     created: "2025-09-26T13:10:49.84352978Z"
     description: SeaweedFS
     digest: 3490aeae4514dcf1132eaa1f64cacb8e087ffe5a8ebe76fee50e6110ba75f8d0
@@ -10,4 +19,4 @@ entries:
     urls:
     - https://github.com/teknoir/seaweedfs-helm/releases/download/seaweedfs-0.0.0-beta.2/seaweedfs-0.0.0-beta.2.tgz
     version: 0.0.0-beta.2
-generated: "2025-09-26T13:10:49.843539398Z"
+generated: "2025-09-26T13:25:02.347453763Z"
