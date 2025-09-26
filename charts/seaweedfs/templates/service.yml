@@ -14,7 +14,7 @@ metadata:
     {{- toYaml .Values.allInOne.service.annotations | nindent 4 }}
   {{- end }}
 spec:
-  internalTrafficPolicy: {{ .Values.allInOne.service.internalTrafficPolicy | default "Cluster" }}
+  type: {{ if or .Values.filer.nodePort .Values.filer.nodePortGrpc }}NodePort{{ else }}ClusterIP{{ end }}
   ports:
   # Master ports
   - name: "swfs-master"
@@ -38,10 +38,16 @@ spec:
   
   # Filer ports
   - name: "swfs-filer"
+    {{- if .Values.filer.nodePort }}
+    nodePort: {{ .Values.filer.nodePort }}
+    {{- end }}
     port: {{ .Values.filer.port }}
     targetPort: {{ .Values.filer.port }}
     protocol: TCP
   - name: "swfs-filer-grpc"
+    {{- if .Values.filer.nodePortGrpc }}
+    nodePort: {{ .Values.filer.nodePortGrpc }}
+    {{- end }}
     port: {{ .Values.filer.grpcPort }}
     targetPort: {{ .Values.filer.grpcPort }}
     protocol: TCP
