@@ -60,7 +60,7 @@ master:
   metricsIp: ""  # Metrics listen IP. If empty, defaults to ipBind
   ipBind: "0.0.0.0"
   volumePreallocate: false
-  volumeSizeLimitMB: 1000
+  volumeSizeLimitMB: 30000
   loggingOverrideLevel: null
   # threshold to vacuum and reclaim spaces, default 0.3 (30%)
   garbageThreshold: null
@@ -343,11 +343,10 @@ volume:
   #     type: "custom"
   #     maxVolumes: 0  # If set to zero on non-windows OS, the limit will be auto configured. (default "7")
 
-#  dataDirs:
-#  - name: data1
-#    type: "hostPath"
-#    hostPathPrefix: /ssd
-#    maxVolumes: 0
+  dataDirs:
+  - name: data
+    type: "hostPath"
+    maxVolumes: 10
 
    # - name: data2
    #   type: "persistentVolumeClaim"
