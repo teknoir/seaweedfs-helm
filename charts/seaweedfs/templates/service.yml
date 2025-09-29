@@ -18,20 +18,32 @@ spec:
   ports:
   # Master ports
   - name: "swfs-master"
+    {{- if .Values.master.nodePort }}
+    nodePort: {{ .Values.master.nodePort }}
+    {{- end }}
     port: {{ .Values.master.port }}
     targetPort: {{ .Values.master.port }}
     protocol: TCP
   - name: "swfs-master-grpc"
+    {{- if .Values.master.nodePortGrpc }}
+    nodePort: {{ .Values.master.nodePortGrpc }}
+    {{- end }}
     port: {{ .Values.master.grpcPort }}
     targetPort: {{ .Values.master.grpcPort }}
     protocol: TCP
   
   # Volume ports
   - name: "swfs-volume"
+    {{- if .Values.volume.nodePort }}
+    nodePort: {{ .Values.volume.nodePort }}
+    {{- end }}
     port: {{ .Values.volume.port }}
     targetPort: {{ .Values.volume.port }}
     protocol: TCP
   - name: "swfs-volume-grpc"
+    {{- if .Values.volume.nodePortGrpc }}
+    nodePort: {{ .Values.volume.nodePortGrpc }}
+    {{- end }}
     port: {{ .Values.volume.grpcPort }}
     targetPort: {{ .Values.volume.grpcPort }}
     protocol: TCP

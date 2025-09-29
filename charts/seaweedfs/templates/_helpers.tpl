@@ -228,10 +228,7 @@ Compute the master service address to be used in cluster env vars.
 If allInOne is enabled, point to the all-in-one service; otherwise, point to the master service.
 */}}
 {{- define "seaweedfs.cluster.masterAddress" -}}
-{{- $serviceNameSuffix := "-master" -}}
-{{- if .Values.allInOne.enabled -}}
-{{-   $serviceNameSuffix = "" -}}
-{{- end -}}
+{{- $serviceNameSuffix := "" -}}
 {{- printf "%s%s.%s:%d" (include "seaweedfs.name" .) $serviceNameSuffix .Release.Namespace (int .Values.master.port) -}}
 {{- end -}}
 
@@ -240,9 +237,6 @@ Compute the filer service address to be used in cluster env vars.
 If allInOne is enabled, point to the all-in-one service; otherwise, point to the filer-client service.
 */}}
 {{- define "seaweedfs.cluster.filerAddress" -}}
-{{- $serviceNameSuffix := "-filer-client" -}}
-{{- if .Values.allInOne.enabled -}}
-{{-   $serviceNameSuffix = "" -}}
-{{- end -}}
+{{- $serviceNameSuffix := "" -}}
 {{- printf "%s%s.%s:%d" (include "seaweedfs.name" .) $serviceNameSuffix .Release.Namespace (int .Values.filer.port) -}}
 {{- end -}}
