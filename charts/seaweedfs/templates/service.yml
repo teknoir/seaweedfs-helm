@@ -64,36 +64,6 @@ spec:
     targetPort: {{ .Values.filer.grpcPort }}
     protocol: TCP
   
-{{/*  # S3 ports (if enabled)*/}}
-{{/*  {{- if .Values.allInOne.s3.enabled }}*/}}
-{{/*  - name: "swfs-s3"*/}}
-{{/*    port: {{ if .Values.allInOne.s3.enabled }}{{ .Values.s3.port }}{{ else }}{{ .Values.filer.s3.port }}{{ end }}*/}}
-{{/*    targetPort: {{ if .Values.allInOne.s3.enabled }}{{ .Values.s3.port }}{{ else }}{{ .Values.filer.s3.port }}{{ end }}*/}}
-{{/*    protocol: TCP*/}}
-{{/*  {{- if and .Values.allInOne.s3.enabled .Values.s3.httpsPort }}*/}}
-{{/*  - name: "swfs-s3-tls"*/}}
-{{/*    port: {{ .Values.s3.httpsPort }}*/}}
-{{/*    targetPort: {{ .Values.s3.httpsPort }}*/}}
-{{/*    protocol: TCP*/}}
-{{/*  {{- end }}*/}}
-{{/*  {{- end }}*/}}
-{{/*  */}}
-{{/*  # SFTP ports (if enabled)*/}}
-{{/*  {{- if .Values.allInOne.sftp.enabled }}*/}}
-{{/*  - name: "swfs-sftp"*/}}
-{{/*    port: {{ .Values.sftp.port }}*/}}
-{{/*    targetPort: {{ .Values.sftp.port }}*/}}
-{{/*    protocol: TCP*/}}
-{{/*  {{- end }}*/}}
-{{/*  */}}
-{{/*  # Server metrics port (single metrics endpoint for all services)*/}}
-{{/*  {{- if .Values.allInOne.metricsPort }}*/}}
-{{/*  - name: "server-metrics"*/}}
-{{/*    port: {{ .Values.allInOne.metricsPort }}*/}}
-{{/*    targetPort: {{ .Values.allInOne.metricsPort }}*/}}
-{{/*    protocol: TCP*/}}
-{{/*  {{- end }}*/}}
-  
   selector:
     app.kubernetes.io/name: {{ template "seaweedfs.name" . }}
     app.kubernetes.io/component: seaweedfs
