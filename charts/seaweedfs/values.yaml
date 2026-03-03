@@ -156,3 +156,5 @@ allInOne:
 podLabels: {}
 # Annotations to be added to all the created pods
 podAnnotations: {}
+# Select what node to run on
+nodeSelector: {}

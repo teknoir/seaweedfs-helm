@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -46,6 +47,8 @@ spec:
       restartPolicy: {{ default .Values.global.restartPolicy .Values.allInOne.restartPolicy }}
       terminationGracePeriodSeconds: 60
       enableServiceLinks: false
+      nodeSelector:
+        {{- toYaml $.Values.nodeSelector | nindent 8 }}
       containers:
         - name: seaweedfs
           image: {{ template "master.image" . }}
