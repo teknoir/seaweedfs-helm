@@ -1,0 +1,22 @@
+# Generated from charts/ci/files/repos/seaweedfs-helm.yaml on 2026-11-23 by plans/cicd/migrate/gen_callers.py
+# Edit freely afterwards; re-running the generator overwrites this file.
+name: chart-release
+
+on:
+  push:
+    branches: [main, beta]
+  workflow_dispatch:
+
+concurrency:
+  group: chart-release-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions: {}
+
+jobs:
+  chart-release:
+    uses: teknoir/ci-workflows/.github/workflows/chart-release.yml@main
+    with:
+      prerelease-branch: beta
+    permissions:
+      contents: write
